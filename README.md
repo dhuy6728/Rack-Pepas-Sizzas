@@ -1,77 +1,80 @@
-# Discord Bot đơn giản 🤖
+# Simple Discord Bot 🤖
 
-Một Discord Bot được xây dựng bằng Python sử dụng library `discord.py`.
+A Discord Bot built with Python using the `discord.py` library.
 
-## Tính năng
+## Features
 
-✨ **Các lệnh cơ bản:**
-- `!ping` - Kiểm tra độ trễ của bot
-- `!hello` - Bot sẽ chào bạn
-- `!user [@user]` - Hiển thị thông tin về người dùng
-- `!help_custom` - Hiển thị danh sách tất cả lệnh
+✨ **Basic Commands:**
+- `!ping` - Check bot latency
+- `!hello` - Bot will greet you
+- `!user [@user]` - Display user information
+- `!help` - Display all commands list
 
-🎮 **Các lệnh giải trí (Fun):**
-- `!dice` - Tung xúc xắc 6 mặt
-- `!coin` - Tung đồng xu
-- `!random [min] [max]` - Chọn số ngẫu nhiên
-- `!choose [option1] [option2] ...` - Chọn một lựa chọn
+🎮 **Fun Commands:**
+- `!dice` - Roll a 6-sided dice
+- `!coin` - Flip a coin
+- `!cf` or `!coinflip` - Flip a coin (shortcut)
+- `!random [min] [max]` - Pick a random number
+- `!choose [option1] [option2] ...` - Choose a random option
+- `!diceroll` or `!dr` - Roll 1, 2, or 3 dice with button interface
 
-🎲 **Oẳn tù tì Multiplayer (Rock Paper Scissors):**
-- `!rps @opponent` - Chơi Oẳn tù tì với người khác (2 người)
-  - Gửi DM để chọn (lựa chọn ẩn từ đối thủ)
-  - Nhấp nút 🪨 📄 ✂️ để chọn
-  - Kết quả hiển thị khi cả 2 đều chọn hoặc hết 30 giây
-  - Nếu chỉ 1 người chọn = thua
-- `!rpshelp` - Xem hướng dẫn chi tiết
+🎲 **Rock Paper Scissors Multiplayer:**
+- `!rps @opponent` - Play Rock Paper Scissors with another player (2 players)
+  - Use in-channel buttons to choose (hidden confirmations)
+  - Click ✊ 📄 ✂️ to select your move
+  - Result shows when both choose or after 30 seconds
+  - If only 1 person chooses = they lose
+- `!rpsbot` or `!rpsbot [1/2/3]` - Play against the bot (single-player)
+- `!rpshelp` - View detailed RPS guide
 
-🔨 **Các lệnh Moderation:**
-- `!kick [@member] [reason]` - Kick một thành viên (cần quyền)
-- `!ban [@member] [reason]` - Ban một thành viên (cần quyền)
-- `!mute [@member]` - Mute một thành viên (cần quyền)
-- `!clear [amount]` - Xóa tin nhắn (cần quyền)
+🔨 **Moderation Commands:**
+- `!kick [@member] [reason]` - Kick a member (requires permissions)
+- `!ban [@member] [reason]` - Ban a member (requires permissions)
+- `!mute [@member]` - Mute a member (requires permissions)
+- `!clear [amount]` - Clear messages (requires permissions)
 
-## Yêu cầu
+## Requirements
 
 - Python 3.8+
 - pip (Package installer for Python)
 
-## Cài đặt
+## Installation
 
-### 1. Clone hoặc tải xuống dự án
+### 1. Clone or download the project
 
 ```bash
 cd "d:\Python Project\Discord Bot"
 ```
 
-### 2. Tạo Virtual Environment (tuỳ chọn nhưng được khuyến khích)
+### 2. Create Virtual Environment (optional but recommended)
 
-**Trên Windows:**
+**On Windows:**
 ```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 ```
 
-**Trên Mac/Linux:**
+**On Mac/Linux:**
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 3. Cài đặt các package cần thiết
+### 3. Install required packages
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Tạo file `.env`
+### 4. Create `.env` file
 
-Sao chép file `.env.example` và đổi tên thành `.env`:
+Copy `.env.example` and rename it to `.env`:
 
 ```bash
 cp .env.example .env
 ```
 
-Hoặc tạo file `.env` thủ công và thêm:
+Or create `.env` manually and add:
 
 ```
 DISCORD_TOKEN=your_bot_token_here
@@ -79,57 +82,58 @@ BOT_PREFIX=!
 BOT_STATUS=Hello World!
 ```
 
-### 5. Lấy Bot Token
+### 5. Get Your Bot Token
 
-1. Truy cập [Discord Developer Portal](https://discord.com/developers/applications)
-2. Tạo "New Application"
-3. Đặt tên cho bot của bạn
-4. Vào tab "Bot" và click "Add Bot"
-5. Copy token và dán vào file `.env`
-6. Bật các intents cần thiết:
+1. Visit [Discord Developer Portal](https://discord.com/developers/applications)
+2. Create a "New Application"
+3. Name your bot
+4. Go to "Bot" tab and click "Add Bot"
+5. Copy the token and paste it in `.env`
+6. Enable required intents:
    - SERVER MEMBERS INTENT
    - MESSAGE CONTENT INTENT
 
-### 6. Thêm bot vào server
+### 6. Add bot to your server
 
-1. Vào tab "OAuth2" → "URL Generator"
-2. Chọn scopes: `bot`
-3. Chọn permissions cần thiết (e.g., Send Messages, Manage Messages, etc.)
-4. Copy URL được tạo ra và mở trong trình duyệt
-5. Chọn server và thêm bot
+1. Go to "OAuth2" → "URL Generator"
+2. Select scope: `bot`
+3. Select required permissions (Send Messages, Manage Messages, etc.)
+4. Copy the generated URL and open in browser
+5. Select server and add the bot
 
-## Chạy Bot
+## Running the Bot
 
 ```bash
 python main.py
 ```
 
-Bạn sẽ thấy thông báo:
+You should see:
 ```
-2024-XX-XX XX:XX:XX,XXX - __main__ - INFO - YourBotName#0000 đã kết nối!
+2024-XX-XX XX:XX:XX,XXX - __main__ - INFO - YourBotName#0000 has connected!
 ```
 
-Điều này có nghĩa là bot đã sẵn sàng!
+The bot is ready!
 
-## Cấu trúc Dự án
+## Project Structure
 
 ```
 Discord Bot/
-├── main.py                 # File chính của bot
-├── config.py               # File cấu hình
-├── requirements.txt        # Danh sách các package cần thiết
-├── .env.example           # Mẫu file .env
+├── main.py                 # Main bot file
+├── config.py               # Configuration file
+├── requirements.txt        # Required packages list
+├── .env.example           # .env template
 ├── .gitignore             # Git ignore file
-├── README.md              # File này
-├── cogs/                  # Các module tính năng
-│   ├── fun.py             # Lệnh giải trí
-│   └── moderation.py      # Lệnh quản lý
-└── logs/                  # Thư mục lưu log
+├── README.md              # This file
+├── cogs/                  # Feature modules
+│   ├── fun.py             # Fun commands
+│   ├── moderation.py      # Moderation commands
+│   └── rps.py             # Rock Paper Scissors game
+└── logs/                  # Log directory
 ```
 
-## Tạo Cog (Module) mới
+## Creating a New Cog (Module)
 
-Để thêm các lệnh mới, tạo file mới trong thư mục `cogs/`:
+To add new commands, create a new file in the `cogs/` directory:
 
 ```python
 import discord
@@ -139,7 +143,7 @@ class MyCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.command(name='mycommand', help='Mô tả lệnh')
+    @commands.command(name='mycommand', help='Command description')
     async def my_command(self, ctx):
         await ctx.send('Hello!')
 
@@ -147,38 +151,48 @@ async def setup(bot):
     await bot.add_cog(MyCog(bot))
 ```
 
-Lưu file và bot sẽ tự động tải nó!
+Save the file and the bot will automatically load it!
 
 ## Troubleshooting
 
-### Bot không kết nối
-- Kiểm tra token trong file `.env`
-- Kiểm tra bot đã được thêm vào server chưa
-- Kiểm tra intents trong Developer Portal
+### Bot not connecting
+- Check token in `.env`
+- Verify bot is added to server
+- Check intents are enabled in Developer Portal
 
-### Lệnh không hoạt động
-- Kiểm tra prefix (mặc định là `!`)
-- Kiểm tra bot có quyền cần thiết không
-- Xem logs để tìm lỗi
+### Commands not working
+- Verify prefix (default is `!`)
+- Check bot has required permissions
+- Check logs for errors
 
-### Module không tải được
-- Kiểm tra tên file trong thư mục `cogs/`
-- Kiểm tra syntax của file
+### Module not loading
+- Check file name in `cogs/` directory
+- Verify file syntax
 
-## Hữu ích
+## Useful Resources
 
 - [Discord.py Documentation](https://discordpy.readthedocs.io/)
 - [Discord Developer Portal](https://discord.com/developers/)
 - [Discord Permissions Calculator](https://discordapi.com/permissions.html)
 
-## Giấy phép
+## Deployment (24/7 Uptime)
+
+Deploy to Railway for free 24/7 hosting:
+
+1. Push code to GitHub (see `QUICKSTART.md`)
+2. Go to https://railway.app
+3. Create new project and select GitHub repo
+4. Add `DISCORD_TOKEN` environment variable
+5. Deploy - bot runs 24/7!
+
+## License
 
 MIT License
 
-## Liên hệ
+## Support
 
-Nếu bạn có câu hỏi hoặc gặp vấn đề, vui lòng mở issue!
+If you have questions or encounter issues, please open an issue!
 
 ---
 
-**Chúc bạn xây dựng bot thành công!** 🚀
+**Happy bot building!** 🚀

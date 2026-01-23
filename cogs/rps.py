@@ -239,8 +239,7 @@ class RockPaperScissors(commands.Cog):
             )
             embed.add_field(
                 name="📝 Rules",
-                value="Choices will be sent via DM\n"
-                      "Result shows only when both choose\n"
+                value="Result shows only when both choose\n"
                       "If time runs out with only 1 choosing = lose",
                 inline=False
             )

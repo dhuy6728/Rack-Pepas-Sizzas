@@ -56,18 +56,18 @@ async def on_command_error(ctx, error):
 
 # ==================== COMMANDS ====================
 
-@bot.command(name='ping', help='Check bot latency')
+@bot.command(name='ping', aliases=['p'], help='Check bot latency')
 async def ping(ctx):
     """Ping command - check latency"""
     latency = round(bot.latency * 1000)
     await ctx.send(f'🏓 Pong! Latency: {latency}ms')
 
-@bot.command(name='hello', help='Bot will greet you')
+@bot.command(name='hello', aliases=['h'], help='Bot will greet you')
 async def hello(ctx):
     """Hello command - bot greets you"""
     await ctx.send(f'👋 Hello {ctx.author.mention}!')
 
-@bot.command(name='user', help='Display user information')
+@bot.command(name='user', aliases=['u', 'userinfo'], help='Display user information')
 async def user_info(ctx, user: discord.User = None):
     """User command - display user information"""
     if user is None:
@@ -83,26 +83,48 @@ async def user_info(ctx, user: discord.User = None):
     
     await ctx.send(embed=embed)
 
-@bot.command(name='help_custom', help='Display list of commands')
+@bot.command(name='help', aliases=['?', 'commands'], help='Display list of commands')
 async def help_custom(ctx):
     """Display list of custom commands"""
     embed = discord.Embed(
         title='📚 Command List',
-        description='All available commands:',
+        description='All available commands (use aliases in parentheses):',
         color=discord.Color.green()
     )
     
     commands_list = [
-        ('!ping', 'Check bot latency'),
-        ('!hello', 'Bot will greet you'),
-        ('!user [@user]', 'Display user information'),
-        ('!rps @opponent', '🎲 Play Rock Paper Scissors Multiplayer (2 players)'),
-        ('!rpshelp', '📖 View RPS game guide'),
-        ('!help_custom', 'Display command list'),
+        ('🔧 **BASIC COMMANDS**', ''),
+        ('!ping (!p)', 'Check bot latency'),
+        ('!hello (!h)', 'Bot will greet you'),
+        ('!user [@user] (!u, !userinfo)', 'Display user information'),
+        ('!help (!?, !commands)', 'Display this command list'),
+        
+        ('🎮 **FUN COMMANDS**', ''),
+        ('!dice (!d)', 'Roll a 6-sided dice'),
+        ('!coin', 'Flip a coin'),
+        ('!cf (!coinflip)', 'Flip a coin (shortcut)'),
+        ('!diceroll (!dr)', 'Roll 1, 2, or 3 dice with button interface'),
+        ('!random [min] [max] (!r, !rand)', 'Pick a random number'),
+        ('!choose [option1] [option2] ... (!ch, !pick)', 'Choose a random option'),
+        
+        ('🎲 **ROCK PAPER SCISSORS**', ''),
+        ('!rps @opponent', 'Play RPS with another player (2 players, 30s timeout)'),
+        ('!rpsbot [choice]', 'Play RPS against the bot (single-player)'),
+        ('!rpshelp', 'View detailed RPS game guide'),
+        
+        ('🔨 **MODERATION COMMANDS**', ''),
+        ('!kick [@member] [reason]', 'Kick a member (requires permissions)'),
+        ('!ban [@member] [reason]', 'Ban a member (requires permissions)'),
+        ('!mute [@member]', 'Mute a member (requires permissions)'),
+        ('!clear [amount]', 'Clear messages (requires permissions)'),
     ]
     
     for cmd, desc in commands_list:
-        embed.add_field(name=cmd, value=desc, inline=False)
+        if desc == '':
+            # Section header
+            embed.add_field(name=cmd, value='────────────────', inline=False)
+        else:
+            embed.add_field(name=cmd, value=desc, inline=False)
     
     await ctx.send(embed=embed)
 
